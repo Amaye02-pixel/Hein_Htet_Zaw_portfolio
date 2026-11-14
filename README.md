@@ -1,5 +1,10 @@
 # Hein Htet Zaw | Digital Identity
 
-Static portfolio site (HTML, CSS, GSAP, ScrollTrigger, Lenis). No build step.
+React + Vite + Tailwind CSS + Framer Motion + GSAP ScrollTrigger + Lenis.
 
-Deploy: import this repo in Vercel with Framework Preset "Other", leave build and output settings empty.
+    npm install
+    npm run dev       # local development
+    npm run build     # production build into dist/
+
+Content lives in `src/data/`. Edit those files to update projects, experience, certificates and contact details.
+Deploys to Vercel with the included `vercel.json` (Vite preset).

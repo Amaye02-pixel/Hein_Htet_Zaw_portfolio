@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ink: #0a0907;
+  --gold: #c9a24b;
+  --gold-light: #e8cf8e;
+  --ivory: #f2ede0;
+  --ease-luxe: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html { background: var(--ink); color-scheme: dark; }
+  html.lenis, html.lenis body { height: auto; }
+  .lenis.lenis-smooth { scroll-behavior: auto !important; }
+  .lenis.lenis-stopped { overflow: hidden; }
+  body {
+    @apply bg-ink font-sans text-ivory antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection { background: var(--gold); color: var(--ink); }
+  :focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; border-radius: 4px; }
+}
+
+@layer components {
+  .container-x { @apply mx-auto w-full max-w-7xl px-6 md:px-10; }
+  .section-y { @apply py-28 md:py-44; }
+  .text-gold-sheen {
+    background: linear-gradient(120deg, #8f6f27 0%, #e8cf8e 45%, #c9a24b 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  /* Spotlight border: --mx/--my are set by pointer handlers on .spotlight */
+  .spotlight { position: relative; isolation: isolate; }
+  .spotlight::before {
+    content: '';
+    position: absolute; inset: 0; border-radius: inherit; padding: 1px; z-index: -1;
+    background: radial-gradient(240px circle at var(--mx, 50%) var(--my, 50%), rgba(201,162,75,.7), transparent 70%);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude;
+    opacity: 0; transition: opacity .4s var(--ease-luxe);
+  }
+  .spotlight:hover::before { opacity: 1; }
+}
+
